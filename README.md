@@ -21,7 +21,7 @@ Runner to run `.py` files in the current directory(except `visualize_not_for_tra
 ### `filetree.py`
 Generate an nary-tree for manage directories with `.pgm` files inside it
 
-## `cut_train.py`
+### `cut_train.py`
 Remove hair from the training picture to met the faces cropped by dlib
 
 ### `file_processor.py`
