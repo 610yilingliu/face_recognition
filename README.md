@@ -1,8 +1,8 @@
 **Specific report and usage could be found in [report](report/report.md), please read it for understanding the limitation of this project and the way to improve it.**
 
-## Author: Yiling Liu
+Author: Yiling Liu
 
-## Student ID: 22214014
+Student ID: 22214014
 
 # File Structure
 
