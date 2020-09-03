@@ -50,14 +50,19 @@ To make it easier for project presentation and the marking of teacher, I did a l
 
 The improvements we can make in this project are:
 
+**Code Optimization**
+
 1. For `build_model`, do not save cropped images directly in a disk, save their numpy array as a `.npy` file instead of cropped image + file path in a `.csv` file
    
 2. For `detect_face`, valid face could be saved in a `.npy` file and load while using it, instead of read all images and convert it into numpy array each time while running the program.
 
-3. Noises could be add in the training pictures (blur, add some rare color block, .etc) to recognize photos in complicated environments.
+**Model Performance**
+
+Noises could be add in the training pictures (blur, add some rare color block, .etc) to recognize photos in complicated environments.
 
 # Training process (directory `build_model`)
 
+## Overview
 The training data I use is [AT&T Database of Faces](https://www.kaggle.com/kasikrit/att-database-of-faces) from Kaggle which contains 40 people's face, these 40 people could be previewed in the following figure
 
 <center><img src="pics/face_preview.png"  alt="Original Image", align = "center"></center>
@@ -76,6 +81,7 @@ To meet the face cropped by dlib, I cropped the faces in this dataset - remove h
 
 I sampled 30,000 pairs of data from training images to build the dataset (80% training set, 20% test set) to train the for 25 epochs.
 
+## Loss Analyze
 The loss of each epoch are shown in the following figure
 
 <center><img src="pics/epochs_losses.png"  alt="loss in each epoch" align=center /></center>
@@ -93,4 +99,24 @@ It is also known as `f'(x)`  of loss in each epoch
 
 <center><img src="pics/epochs_rewards.png"  alt="loss in each epoch" align=center /></center>
 
-The highest reward happen between epoch one and two and get fluctuated in the following epochs. It is clear that the losses are decreasing continuously during the training process through
+The highest reward happen between epoch one and two and get fluctuated in the following epochs. It is clear that the losses are decreasing continuously through the whole training process.
+
+## Model Structure
+
+1. Input Layer(92 * 92)
+2. Max Pooling Layer (3 x 3)
+3. Drop out (0.25)
+4. Convolution Layer (Kernel size = 3 x 3, Stride = 1, padding = valid)
+5. Drop out (0.25)
+6. Convolution Layer (Kernel size = 2 x 2, Stride = 1, padding = valid)
+7. Max Pooling Layer (3 x 3)
+8. Drop out (0.25)
+9. Flatten
+10. Dense(1024)
+11. Drop out(0.1)
+12. Dense(512, relu)
+13. Dense(128, relu)
+14. Dense(64,relu)
+15. Lambda Layer: Count the distance between two 1 * 64 vectors. The distance is defined as $|x_1 -x_2|$ for $x_1$ from a vector trained from image 1 with step 1-14 and $x_2$ from vector from image 2 trained by step 1-14 
+16. Output layer: return a number between 0 - 1(Sigmoid activation transformed the original number to 0-1 interval)
+    
