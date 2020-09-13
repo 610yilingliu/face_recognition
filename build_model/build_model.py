@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 from tensorflow.keras.layers import *
-from tensorflow.keras import models , optimizers , losses
+from tensorflow.keras import models , optimizers , losses, Sequential
 import tensorflow.keras.backend as K
 from PIL import Image
 
@@ -57,9 +57,9 @@ class Sia_net:
         kernel_size2 = (3, 3)
         pool_size = (3, 3)
         strides = 1
-        model = tf.keras.Sequential()
+        model = Sequential()
         # convolution layer 1
-        model.add(Conv2D(filters = 16, kernel_size = kernel_size2, strides = 1, activation = "relu", input_shape = input_shape, data_format = "channels_last", padding = "valid"))
+        model.add(Conv2D(filters = 16, kernel_size = kernel_size2, strides = 1, activation = "relu", input_shape = input_shape, padding = "valid"))
         model.add(MaxPool2D(pool_size = pool_size))
         model.add(Dropout(0.25))
         # convolution layer 2

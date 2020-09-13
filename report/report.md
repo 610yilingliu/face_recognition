@@ -56,6 +56,7 @@ The improvements we can make in this project are:
    
 2. For `detect_face`, valid face could be saved in a `.npy` file and load while using it, instead of read all images and convert it into numpy array each time while running the program.
 
+3. The data format in this dataset is HWC, but CHW is much efficient to train on GPU. 
 **Model Performance**
 
 Noises could be add in the training pictures (blur, add some rare color block, .etc) to recognize photos in complicated environments.
@@ -119,4 +120,32 @@ The highest reward happen between epoch one and two and get fluctuated in the fo
 14. Dense(64,relu)
 15. Lambda Layer: Count the distance between two 1 * 64 vectors. The distance is defined as $|x_1 -x_2|$ for $x_1$ from a vector trained from image 1 with step 1-14 and $x_2$ from vector from image 2 trained by step 1-14 
 16. Output layer: return a number between 0 - 1(Sigmoid activation transformed the original number to 0-1 interval)
-    
+
+In my understanding, relu uses to reduce the dimension of variables(change negative variable to 0 to deactivate it) to extract important features.
+
+## Result
+
+For valid photo Obama1
+![](./../detect_face/valid_faces/obama1.jpg)
+
+and Obama2
+
+![](./../detect_face/valid_faces/obama2.jpg)
+
+We use another Obama photo
+
+![](../detect_face/test/obama.jpg)
+
+and Jordan
+
+![](./../detect_face/test/jordan.jpg)
+
+To match them
+
+The result is:
+```
+obama.pgm matches obama2.pgm, match rate: 0.899
+No valid person found! for jordan.pgm
+```
+
+The reason why Obama photo cannot match Obama 1 is that we do not have that kind of smiley face in our training images, but Obama2 and Obama both have less emotion, so they match successfully.
