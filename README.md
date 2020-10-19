@@ -16,7 +16,7 @@ Original dataset for training(AT&T dataset with 40 faces)
 Just for visualize the faces in `train_faces`, it is a single file not necessary for data training, could be remove safely.
 
 ### `__main__.py`
-Runner to run `.py` files in the current directory(except `visualize_not_for_training.py`)
+Runner to run `.py` files in the current directory(except `visualize_not_for_training.py`). Only used for combine those files together to run. In the real life schema, this packages will provide APIs for face recognition.
 
 ### `filetree.py`
 Generate an nary-tree for manage directories with `.pgm` files inside it

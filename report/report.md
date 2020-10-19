@@ -57,6 +57,7 @@ The improvements we can make in this project are:
 2. For `detect_face`, valid face could be saved in a `.npy` file and load while using it, instead of read all images and convert it into numpy array each time while running the program.
 
 3. The data format in this dataset is HWC, but CHW is much efficient to train on GPU. 
+   
 **Model Performance**
 
 Noises could be add in the training pictures (blur, add some rare color block, .etc) to recognize photos in complicated environments.
@@ -69,6 +70,12 @@ The training data I use is [AT&T Database of Faces](https://www.kaggle.com/kasik
 <center><img src="pics/face_preview.png"  alt="Original Image", align = "center"></center>
 
 *<center>Fig1. AT&T Dataset Preview</center>*
+
+For single person, his/her emotions will like this:
+
+
+<center><img src="pics/emotions.png"  alt="Original Image", align = "center"></center>
+
 
 To meet the face cropped by dlib, I cropped the faces in this dataset - remove hair from the photo
 

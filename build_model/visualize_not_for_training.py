@@ -31,9 +31,26 @@ def show_pics(path):
     plt.draw()
     f.savefig('./report_figs/face_preview.png')
 
+def show_emotions(paths):
+    pics = os.listdir(paths)
+    rownum = int(math.sqrt(len(pics)))
+    colnum = len(pics) // rownum if len(pics) % rownum == 0 else len(pics) // rownum + 1
+    plt.figure(figsize=(10, 10))
+    for i in range((len(pics))):
+        cur_pic = Image.open(paths +  '/' + pics[i])
+        p = plt.subplot(colnum, rownum, i + 1)
+        p.axis('off')
+        plt.imshow(cur_pic,cmap = plt.cm.gray)
+    f = plt.gcf()
+    plt.show()
+    plt.draw()
+    f.savefig('./report_figs/emtions.png')
+
+
 
 if __name__ == '__main__':
-    show_pics('./train_faces')
+    # show_pics('./train_faces')
+    show_emotions('build_model/train_faces/s1')
         
 
         
