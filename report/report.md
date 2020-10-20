@@ -3,11 +3,40 @@
 ### Author: Yiling Liu (Individual Project)
 ### Student ID: 22214014
 
+# Usage
+
+## Requirements:
+
+- dlib
+- cv2
+- tensorflow 2.0+
+- matplotlib
+
+## How to run
+
+### To train the model
+
+1. enter `build_model`
+2. run `__main__.py`
+I haven't change the import path for `python -m build_model`(It would be easier for myself to debug in VSCode), if you want to do that, please change the import path from `xxx`(modules in this dir) to `build_model.xxx`
+
+Trained result will be available in `build_model/models`, If you want to see the losses within epochs, the training loss will be available in `build_model/report_figs`
+
+### To apply the model for face recognition
+
+1. enter `detect_face`
+2. run `__main__.py`
+The paths in this module haven't change for `python -m detect_face`, too. Change the import path to `detect_face.xxx` if you want to use it.
+
+The result will be printed in the terminal.
+
+If you want to use your own images, please put valid images in `detect_face/valid_faces`, and the faces for testing in `detect_face/test`.Remember to use images with less emotions otherwise the model cannot work.
+
 # Background Description
 
 ## Why Choose this Project
 
-I am living in an apartment which has 7 floors. The neighbor who living in 7th floor is a kind, talkative man  - we call him uncle Fu. He always knock my door and come to chat with my father. But the security of our apartment is quite lax, every few days there will be some salesman knock our door to sell their products. It is quite annoying, and it is not polite to open the door and drive them away directly. There are two ways to solve this problem: to spend about 2,000 CNY to buy a new door with sight window, or to recognize who is knocking the door without opening the interior door (with ai tech and Raspberry Pi. Taking photo while the body sensor module detect there is a person at the door, and analyze if that photo contains uncle Fu or not) so we can pretend there is nobody at home and the salesman will leave.
+I am living in an apartment which has 7 floors. The neighbor who living in 7th floor is a kind, talkative man  - we call him uncle Fu. He always knock my door and come to chat with my father. But the security of our apartment is quite lax, every days there are some salesman knock our door to sell their products. It is quite annoying, and it is not polite to open the door and drive them away directly. There are two ways to solve this problem: to spend about 2,000 CNY to buy a new door with sight window, or to recognize who is knocking the door without opening the interior door (with ai tech and Raspberry Pi. Taking photo while the body sensor module detect there is a person at the door, and analyze if that photo contains uncle Fu or not) so we can pretend there is nobody at home and the salesman will leave.
 
 This project will not spend too much time in training model, too. Unlike the large datasets on Kaggle like recognizing the right whales, it is impossible for me to take hundreds of photo of uncle Fu so the training data will not be sufficient.
 
@@ -156,3 +185,7 @@ No valid person found! for jordan.pgm
 ```
 
 The reason why Obama photo cannot match Obama 1 is that we do not have that kind of smiley face in our training images, but Obama2 and Obama both have less emotion, so they match successfully.
+
+## Time spent
+
+2 days in design and coding. I was working on the project for project management at that time, too. So I just finish this face recognition model and leave it there and come to work for PM project. One week later the lock got fixed.
