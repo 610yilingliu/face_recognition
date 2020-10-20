@@ -24,8 +24,9 @@ Trained result will be available in `build_model/models`, If you want to see the
 
 ### To apply the model for face recognition
 
-1. enter `detect_face`
-2. run `__main__.py`
+1. copy the model trained from `build_model` to `detect_face/models`
+2. enter `detect_face`
+3. run `__main__.py`
 The paths in this module haven't change for `python -m detect_face`, too. Change the import path to `detect_face.xxx` if you want to use it.
 
 The result will be printed in the terminal.
